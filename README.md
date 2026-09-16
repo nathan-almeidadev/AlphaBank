@@ -19,7 +19,7 @@ O **AlphaBank** é um projeto de Engenharia de Dados focado no design, implement
 
 O pipeline do **AlphaBank** adota o padrão de **Arquitetura Medallion** para transformar dados transacionais brutos em camadas analíticas de alta performance, garantindo governança, qualidade e rastreabilidade em cada etapa.
 
-![Arquitetura Medallion - AlphaBank](C:\Users\u515833\Downloads\AlphaBank_Arquivo.drawio.png)
+![Arquitetura Medallion - AlphaBank](.docs/images/AlphaBank_Arquivo.drawio.png)
 
 ### 🔄 Fluxo de Processamento
 

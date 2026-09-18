@@ -39,22 +39,18 @@ O pipeline do **AlphaBank** adota o padrão de **Arquitetura Medallion** para tr
        │
        ▼
 ┌─────────────┐
-│    Bronze:  |
-|     CSV     │
+│ Bronze CSV  │
 └──────┬──────┘
        │
        ▼
 ┌─────────────┐
-│   Silver:   |
-|   Python    |
-|   Pandas    │
+│ Silver      │
 │   Parquet   │
 └──────┬──────┘
        │
        ▼
 ┌─────────────┐
-│     Gold:   |
-|    DuckDB   │
+│ DuckDB Gold │
 └──────┬──────┘
        │
        ▼

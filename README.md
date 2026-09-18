@@ -86,7 +86,7 @@ O pipeline do **AlphaBank** adota o padrão de **Arquitetura Medallion** para tr
 | Etapa | Descrição | Status |
 | :--- | :--- | :--- |
 | **1. Modelagem Conceitual** | Mapeamento do ERD cobrindo todas as entidades e regras de negócio bancárias. | ✅ Concluído |
-| **2. Modelagem Lógica** | Definição de PKs, FKs, integridade referencial e tipos de dados exatos no DrawSQL. | ✅ Concluído |
+| **2. Modelagem Lógica** | Definição de PKs, FKs, integridade referencial e tipos de dados exatos no DBDiagram. | ✅ Concluído |
 | **3. DDL & PostgreSQL** | Geração e execução dos scripts SQL (`CREATE TABLE`) para subir o banco físico. | 🟡 Em Andamento |
 | **4. Ingestão & Mocking** | Criação de scripts Python (`Faker`) para gerar dados sintéticos e salvar no Bronze (CSV). | ⏳ Planejado |
 | **5. Medallion Pipeline** | Tratamento e limpeza dos dados em Parquet (Silver) e agregação no DuckDB (Gold). | ⏳ Planejado |

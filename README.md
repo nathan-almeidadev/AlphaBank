@@ -3,6 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![Database](https://img.shields.io/badge/Database-PostgreSQL-blue)
 ![Backend](https://img.shields.io/badge/Backend-Python-green)
+![Pipeline](https://img.shields.io/badge/Pipeline-Medallion-purple)
 ![BI](https://img.shields.io/badge/Future-PowerBI-orange)
 
 ## 📌 Sobre o Projeto

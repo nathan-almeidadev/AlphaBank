@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![Pipeline](https://img.shields.io/badge/Pipeline-Medallion-purple)
 ![Database](https://img.shields.io/badge/Database-PostgreSQL-blue)
-![Backend](https://img.shields.io/badge/Cleansed_&_Formatted-Python-green)
+![Backend](https://img.shields.io/badge/Cleansed_&_Formatted-Python_with_Pandas-green)
 ![Analytics](https://img.shields.io/badge/Analytics_&_Aggregates-DuckDB-white)
 ![BI](https://img.shields.io/badge/Business_Intelligence-PowerBI-orange)
 

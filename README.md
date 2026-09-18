@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![Pipeline](https://img.shields.io/badge/Pipeline-Medallion-purple)
 ![Database OLTP](https://img.shields.io/badge/Database_(OLTP)-PostgreSQL-blue)
-![Formatted](https://img.shields.io/badge/Cleansed_&_Formatted-Python_w/_Pandas-green)
+![Cleansed](https://img.shields.io/badge/Processed_&_Cleansed-Python_w/_Pandas-green)
 ![Analytics](https://img.shields.io/badge/Analytics_&_Aggregates-DuckDB-white)
 ![BI](https://img.shields.io/badge/Business_Intelligence-PowerBI-orange)
 
@@ -30,8 +30,37 @@ O pipeline do **AlphaBank** adota o padrão de **Arquitetura Medallion** para tr
 
 * **Source (OLTP):** Dados operacionais transacionais armazenados no **PostgreSQL**.
 * **Bronze Layer (Raw Data):** Extração e persistência dos dados brutos em arquivos **CSV**, preservando o histórico original do sistema.
-* **Silver Layer (Cleansed & Formatted):** Limpeza de dados, tratamento de nulos, aplicação de schemas e conversão para o formato otimizado **Apache Parquet** utilizando **Python (Pandas/Polars)**.
+* **Silver Layer (Processed & Cleansed):** Limpeza de dados, tratamento de nulos, aplicação de schemas e conversão para o formato otimizado **Apache Parquet** utilizando **Python (Pandas/Polars)**.
 * **Gold Layer (Analytics & Aggregates):** Modelagem dimensional, cálculo de *snapshots* de saldos e indicadores de negócio prontos para consumo no motor analítico **DuckDB**.
+
+┌─────────────┐
+│ PostgreSQL  │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│    Bronze:  |
+|     CSV     │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   Silver:   |
+|   Python    |
+|   Pandas    │
+│   Parquet   │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│     Gold:   |
+|    DuckDB   │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ Power BI    │
+└─────────────┘
 
 ---
 ## 📊 Módulos do Sistema

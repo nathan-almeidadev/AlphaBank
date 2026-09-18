@@ -1,9 +1,9 @@
 # 🏦 AlphaBank - Database Architecture & Medallion Data Pipeline
 
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
-![Database](https://img.shields.io/badge/Database-PostgreSQL-blue)
-![Backend](https://img.shields.io/badge/Backend-Python-green)
 ![Pipeline](https://img.shields.io/badge/Pipeline-Medallion-purple)
+![Database](https://img.shields.io/badge/Database-PostgreSQL-blue)
+![Backend](https://img.shields.io/badge/Cleansed_&_Formatted-Python-green)
 ![Analytics](https://img.shields.io/badge/Analytics_&_Aggregates-DuckDB-white)
 ![BI](https://img.shields.io/badge/Business_Intelligence-PowerBI-orange)
 

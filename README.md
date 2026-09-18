@@ -4,7 +4,7 @@
 ![Database](https://img.shields.io/badge/Database-PostgreSQL-blue)
 ![Backend](https://img.shields.io/badge/Backend-Python-green)
 ![Pipeline](https://img.shields.io/badge/Pipeline-Medallion-purple)
-![BI](https://img.shields.io/badge/Dashboard_&_Analytics-PowerBI-orange)
+![BI](https://img.shields.io/badge/Dashboard_&_Analytics-DuckDB_and_PowerBI-orange)
 
 ## 📌 Sobre o Projeto
 O **AlphaBank** é um projeto de Engenharia de Dados focado no design, implementação e consumo de um ecossistema bancário completo. O objetivo é simular um ambiente transacional real (OLTP no PostgreSQL) e construir uma pipeline de dados ponta a ponta utilizando a **Medallion Architecture** (Bronze, Silver e Gold) para alimentar camadas de analytics em alta performance.
@@ -14,7 +14,7 @@ O **AlphaBank** é um projeto de Engenharia de Dados focado no design, implement
 ## 🛠️ Stack Tecnológica
 
 * **Relational Database (OLTP):** PostgreSQL
-* **Schema Design & Modeling:** ERDPlus / DrawSQL / DBML
+* **Schema Design & Modeling:** BrModelo / ERDPlus / dbdiagram.io / DBML
 * **Data Processing & ETL:** Python (Pandas / Polars / Faker)
 * **Storage Formats:** CSV (Camada Bronze / Raw) e Apache Parquet (Camada Silver / Clean)
 * **Analytical Engine (OLAP):** DuckDB (Camada Gold / Analytics)

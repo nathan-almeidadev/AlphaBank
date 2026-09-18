@@ -37,19 +37,38 @@ O pipeline do **AlphaBank** adota o padrão de **Arquitetura Medallion** para tr
 
 ## 🏛️ Arquitetura Física
 
-PostgreSQL
-│
-▼
-CSV (Bronze)
-│
-▼
-Parquet (Silver)
-│
-▼
-DuckDB (Gold)
-│
-▼
-Power BI
+```text
+┌─────────────────────────┐
+│ PostgreSQL (OLTP)       │
+│ Sistema Transacional    │
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Bronze Layer            │
+│ CSV (Raw Data)          │
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Silver Layer            │
+│ Parquet (Clean Data)    │
+│ Pandas / Polars         │
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Gold Layer              │
+│ DuckDB                  │
+│ Analytics & KPIs        │
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Power BI                │
+│ Dashboards              │
+└─────────────────────────┘
+```
 
 ---
 

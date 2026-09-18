@@ -1,5 +1,10 @@
 # 🏦 AlphaBank - Database Architecture & Medallion Data Pipeline
 
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
+![Database](https://img.shields.io/badge/Database-PostgreSQL-blue)
+![Backend](https://img.shields.io/badge/Backend-Python-green)
+![BI](https://img.shields.io/badge/Future-PowerBI-orange)
+
 ## 📌 Sobre o Projeto
 O **AlphaBank** é um projeto de Engenharia de Dados focado no design, implementação e consumo de um ecossistema bancário completo. O objetivo é simular um ambiente transacional real (OLTP no PostgreSQL) e construir uma pipeline de dados ponta a ponta utilizando a **Medallion Architecture** (Bronze, Silver e Gold) para alimentar camadas de analytics em alta performance.
 

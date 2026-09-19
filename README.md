@@ -25,6 +25,27 @@ O sistema do **AlphaBank** foi projetado para atender aos seguintes pilares oper
 
 ---
 
+## 📐 Modelagem de Dados
+
+A arquitetura relacional do **AlphaBank** foi projetada em duas etapas fundamentais para garantir o alinhamento entre os requisitos de negócio e a implementação técnica:
+
+### 1. Modelo Conceitual
+Mapeamento de alto nível das entidades, atributos e relacionamentos derivados diretamente do documento de requisitos (RFP).
+
+![Modelo Conceitual](./docs/images/modelo_conceitual.png)
+
+### 2. Modelo Lógico (DBML)
+Estruturação detalhada das tabelas, tipos de dados, chaves primárias (PK), chaves estrangeiras (FK) e restrições de integridade.
+
+![Modelo Lógico](./docs/images/alphabank_erd.png)
+
+### 🔗 Artefatos da Modelagem
+* 📄 **Especificação de Negócio (RFP):** [`docs/regras_de_negocio.md`](./docs/regras_de_negocio.md)
+* 💻 **Código-fonte DBML:** [`docs/alphabank_schema.dbml`](./docs/alphabank_schema.dbml)
+* 🗄️ **Script DDL (PostgreSQL):** [`sql/ddl/01_create_tables.sql`](./sql/ddl/01_create_tables.sql)
+
+---
+
 ## 🛠️ Stack Tecnológica
 
 * **Relational Database (OLTP):** PostgreSQL

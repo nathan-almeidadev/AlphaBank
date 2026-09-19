@@ -32,12 +32,12 @@ A arquitetura relacional do **AlphaBank** foi projetada em duas etapas fundament
 ### 1. Modelo Conceitual
 Mapeamento de alto nível das entidades, atributos e relacionamentos derivados diretamente do documento de requisitos (RFP).
 
-![Modelo Conceitual](./docs/images/modelo_conceitual.png)
+![Modelo Conceitual](./docs/images/alphabank_modelo_conceitual.png)
 
 ### 2. Modelo Lógico (DBML)
 Estruturação detalhada das tabelas, tipos de dados, chaves primárias (PK), chaves estrangeiras (FK) e restrições de integridade.
 
-![Modelo Lógico](./docs/images/alphabank_erd.png)
+![Modelo Lógico](./docs/images/alphabank_modelo_logico.png)
 
 ### 🔗 Artefatos da Modelagem
 * 📄 **Especificação de Negócio (RFP):** [`docs/regras_de_negocio.md`](./docs/regras_de_negocio.md)

@@ -26,6 +26,29 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# Arquivos de Dados e Storage Local (Medallion)
+data/
+*.csv
+*.parquet
+*.duckdb
+*.db
+*.sqlite3
+
+# Arquivos de Ambiente Virtual e Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# Configurações de IDE e SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
 # PyInstaller
 #   Usually these files are written by a python script from a template
 #   before PyInstaller builds the exe, so as to inject date/other infos into it.

@@ -12,6 +12,19 @@ O **AlphaBank** é um projeto de Engenharia de Dados focado no design, implement
 
 ---
 
+## 🎯 Regras de Negócio e Arquitetura
+
+O sistema do **AlphaBank** foi projetado para atender aos seguintes pilares operacionais:
+
+- **Especialização de Clientes:** Segregação rígida entre Pessoa Física (CPF) e Pessoa Jurídica (CNPJ).
+- **Contas Conjuntas vs. Salário:** Suporte a múltiplos titulares para Contas Correntes/Poupança e trava de titularidade única (PF) vinculada a empregador (PJ) para Conta Salário.
+- **Rastreabilidade de Crédito & Liquidação:** Encadeamento completo de Empréstimos, Parcelas, Faturas e Boletos com liquidação atrelada ao Core Banking.
+- **Governança & Analytics:** Tabela de fechamento de `saldo_diario` para otimização de consultas analíticas e trilha de auditoria para operações críticas.
+
+📄 **[Clique aqui para ler a documentação completa de Regras de Negócio (RFP)](./docs/regras_de_negocio.md)**
+
+---
+
 ## 🛠️ Stack Tecnológica
 
 * **Relational Database (OLTP):** PostgreSQL

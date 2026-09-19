@@ -1,0 +1,303 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table pessoa_fisica {
+  cpf_cliente varchar [primary key]
+  primeiro_nome varchar [not null]
+  sobrenome varchar [not null]
+  dt_nascimento date [not null]
+  id_cliente integer [unique, not null]
+}
+
+Table pessoa_juridica {
+  cnpj_cliente varchar [primary key]
+  nome_popular varchar
+  razao_social varchar [not null]
+  dt_abertura date [not null]
+  id_cliente integer [unique, not null]
+}
+
+Table cliente {
+  id_cliente integer [primary key]
+  email varchar [unique, not null]
+  dt_cadastro date [not null]
+  id_endereco integer [not null]
+}
+
+Table telefone {
+  id_telefone integer [primary key]
+  ddd varchar [not null]
+  num_telefone varchar [not null]
+  id_cliente integer [not null]
+}
+
+Table titularidade {
+  id_cliente integer [primary key]
+  id_conta integer [primary key]
+}
+
+Table conta {
+  id_conta integer [primary key]
+  num_conta varchar [unique, not null]
+  num_agencia varchar [not null]
+  tipo_conta varchar [not null]
+}
+
+Table chave_pix {
+  chave varchar [primary key]
+  tipo_chave varchar [not null]
+  id_conta integer [not null]  
+} 
+
+Table conta_salario {
+  id_conta integer [primary key]
+  cnpj_empregador varchar [not null]
+  cpf_empregado varchar [not null]
+}
+
+Table saldo_diario {
+  id_conta integer [primary key]
+  dt_registro date [primary key]
+  saldo_fechamento numeric [not null]
+}
+
+Table agencia {
+  num_agencia varchar [primary key]
+  nome_agencia varchar [not null]
+  id_endereco integer [not null]
+}
+
+Table funcionario {
+  cpf_funcionario varchar [primary key]
+  primeiro_nome varchar [not null] 
+  sobrenome varchar [not null]
+  cargo varchar [not null]
+  salario numeric [not null]
+  dt_admissao date [not null]
+  num_agencia varchar [not null]
+  id_endereco integer [not null]
+  cpf_supervisor varchar
+}
+
+Table endereco {
+  id_endereco integer [primary key]
+  cep varchar [not null]
+  uf varchar [not null]
+  cidade varchar [not null]
+  rua varchar [not null]
+  numero varchar [not null]
+  complemento varchar 
+}
+
+Table transacao {
+  id_transacao integer [primary key]
+  dt_transacao timestamp [not null]
+  canal varchar [not null]
+  valor numeric [not null]
+  status varchar [not null]
+  tipo_transacao varchar [not null]
+}
+
+Table saque {
+  id_transacao integer [primary key]
+  id_conta_origem integer [not null]
+}
+
+Table deposito {
+  id_transacao integer [primary key] 
+  id_conta_destino integer [not null]
+}
+
+Table demais_transacoes {
+  id_transacao integer [primary key]
+  id_conta_origem integer [not null]
+  id_conta_destino integer [not null]
+} 
+
+Table cartao {
+  num_cartao char [primary key]
+  nome_titular varchar [not null]
+  mes_vencimento varchar [not null]
+  ano_vencimento varchar [not null]
+  cod_seguranca char [not null]
+  tipo_cartao varchar [not null]
+  id_conta integer [not null]
+}
+
+Table cartao_credito {
+  num_cartao char [primary key]
+  limite_disponivel numeric [not null]
+  limite_total numeric [not null]
+}
+
+Table fatura_mensal {
+  id_fatura integer [primary key]
+  num_cartao char [not null]
+  dt_fechamento date [not null]
+  dt_vencimento date [not null]
+  valor_total numeric [not null]
+  status varchar [not null]
+}
+
+Table fatura_boleto {
+  cod_boleto varchar [primary key]
+  id_fatura integer [not null]
+} 
+
+Table boleto {
+  cod_boleto varchar [primary key]
+  valor numeric [not null]
+  dt_vencimento date [not null]
+  dt_emissao date [not null]
+  origem varchar [not null]
+  status varchar [not null]
+  id_conta integer [not null]
+}
+
+Table pagamento_boleto {
+  cod_boleto varchar [primary key]
+  id_transacao integer [unique]
+}
+
+Table emprestimo{
+  id_emprestimo integer [primary key]
+  qtd_parcelas integer [not null]
+  valor_total numeric [not null]
+  taxa_juros numeric [not null]
+  status varchar [not null]
+  dt_contratacao date [not null]
+  id_cliente integer [not null]
+}
+
+Table parcela {
+  id_parcela integer [primary key]
+  id_emprestimo integer [not null]
+  dt_referencia date [not null]
+  valor numeric [not null]
+  dt_vencimento date [not null]
+  num_parcela integer [not null]
+  status_pagamento varchar [not null]
+}
+
+Table boleto_parcela {
+  id_parcela integer [primary key]
+  cod_boleto varchar [not null]
+}
+
+Table log_auditoria {
+  id_log integer [primary key]
+  acao_realizada varchar [not null]
+  objeto_alterado varchar [not null] 
+  dt_alteracao timestamp [not null]
+  tipo_autor varchar [not null]
+  valor_antigo varchar [null]
+  valor_novo varchar [null] 
+}
+
+Table log_cliente {
+  id_log integer [primary key]
+  id_cliente integer [not null]
+}
+
+Table log_funcionario {
+  id_log integer [primary key]
+  cpf_funcionario varchar [not null]
+}
+
+/// ============================
+/// RELACIONAMENTOS (REF)
+/// ============================
+
+/// Governança e Auditoria
+
+Ref: log_funcionario.id_log ?- log_auditoria.id_log
+
+Ref: log_funcionario.cpf_funcionario > funcionario.cpf_funcionario
+
+Ref: log_cliente.id_log ?- log_auditoria.id_log
+
+Ref: log_cliente.id_cliente > cliente.id_cliente
+
+/// Crédito e Empréstimos
+
+Ref: emprestimo.id_cliente > cliente.id_cliente
+
+Ref: parcela.id_emprestimo > emprestimo.id_emprestimo
+
+Ref: boleto_parcela.id_parcela >  parcela.id_parcela
+
+Ref: boleto_parcela.cod_boleto  ?> boleto.cod_boleto
+
+/// Faturas e Cartões
+
+Ref: fatura_boleto.cod_boleto ?> boleto.cod_boleto
+
+Ref: fatura_boleto.id_fatura > fatura_mensal.id_fatura
+
+Ref: fatura_mensal.num_cartao ?>  cartao.num_cartao
+
+Ref: cartao.id_conta > conta.id_conta
+
+Ref: cartao_credito.num_cartao ?- cartao.num_cartao
+
+/// Pagamentos e Boletos
+
+Ref: boleto.id_conta > conta.id_conta
+
+Ref: pagamento_boleto.id_transacao ?- transacao.id_transacao 
+
+Ref: pagamento_boleto.cod_boleto ?- boleto.cod_boleto
+
+/// Core Banking e Contas
+
+Ref: saldo_diario.id_conta > conta.id_conta
+
+Ref: agencia.num_agencia < conta.num_agencia 
+
+Ref: conta.id_conta < titularidade.id_conta
+
+Ref: cliente.id_cliente < titularidade.id_cliente
+
+Ref: chave_pix.id_conta ?> conta.id_conta
+
+/// Especializações de Clientes e Contas
+
+Ref: pessoa_juridica.id_cliente - cliente.id_cliente
+
+Ref: pessoa_fisica.id_cliente - cliente.id_cliente
+
+Ref: conta_salario.cpf_empregado > pessoa_fisica.cpf_cliente
+
+Ref: conta_salario.cnpj_empregador > pessoa_juridica.cnpj_cliente
+
+Ref: conta_salario.id_conta - conta.id_conta
+
+/// Especializações de Transações
+
+Ref: deposito.id_conta_destino > conta.id_conta
+
+Ref: saque.id_conta_origem > conta.id_conta
+
+Ref: demais_transacoes.id_conta_destino ?> conta.id_conta
+
+Ref: demais_transacoes.id_conta_origem ?> conta.id_conta
+
+Ref: saque.id_transacao ?- transacao.id_transacao
+
+Ref: deposito.id_transacao ?- transacao.id_transacao
+
+Ref: demais_transacoes.id_transacao ?- transacao.id_transacao 
+
+/// RH e Endereços
+
+Ref: cliente.id_cliente < telefone.id_cliente
+
+Ref: funcionario.id_endereco > endereco.id_endereco
+
+Ref: funcionario.num_agencia > agencia.num_agencia
+
+Ref: funcionario.cpf_funcionario >? funcionario.cpf_supervisor
+
+Ref: agencia.id_endereco > endereco.id_endereco
+
+Ref: cliente.id_endereco > endereco.id_endereco

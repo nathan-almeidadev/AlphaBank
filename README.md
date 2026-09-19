@@ -49,7 +49,7 @@ Estruturação detalhada das tabelas, tipos de dados, chaves primárias (PK), ch
 ## 🛠️ Stack Tecnológica
 
 * **Relational Database (OLTP):** PostgreSQL
-* **Schema Design & Modeling:** BrModelo / ERDPlus / dbdiagram.io / DBML
+* **Schema Design & Modeling:** ERDPlus / dbdiagram.io / DBML
 * **Data Processing & ETL:** Python (Pandas / Polars / Faker)
 * **Storage Formats:** CSV (Camada Bronze / Raw) e Apache Parquet (Camada Silver / Clean)
 * **Analytical Engine (OLAP):** DuckDB (Camada Gold / Analytics)
